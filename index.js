@@ -1,34 +1,50 @@
 let messageEl = document.querySelector(".message-el");
 let sumEl = document.querySelector(".sum-el");
 let cardsEl = document.querySelector(".cards-el"); 
-
-let firstCard = Math.floor(Math.random() * 11) + 2;
-let secondCard = Math.floor(Math.random() * 11) + 2;
-
-let sum = firstCard + secondCard;
-let hasBlackJack = false;
-let isAlive = true;
-let message = "";
-
-sumEl.innerText += sum;
-cardsEl.innerText += `${firstCard} ${secondCard}`;
-
-function addMessage(message) {
-  messageEl.innerText = message;
-}
+let startGameBtn = document.querySelector(".start-game-el")
 
 function startGame() {
-  window.location.reload();
+  renderGame();
 }
 
-if(sum < 21) {
-  addMessage("Do you want to draw a new card?")
-}else if(sum === 21) {
-  addMessage("Wohoo! You've got Blackjack! :)")
-  hasBlackJack = true;
-}else if(sum > 21) {
-  addMessage("You're out of the game! :(")
- isAlive = false;
+function getRandomCards() {
+  return Math.floor(Math.random() * 13) + 1
 }
 
-console.log(message);
+function renderGame() {
+
+let firstCard = getRandomCards();
+let secondCard = getRandomCards();
+let cards = [firstCard, secondCard];
+  
+  let sum = firstCard + secondCard;
+  let hasBlackJack = false;
+  let isAlive = true;
+  let message = "";
+
+  cardsEl.textContent = "Cards: ";
+  sumEl.textContent = `Sum: ${sum}`;
+
+  for(let i = 0; i < cards.length; i++) {
+    cardsEl.textContent += cards[i] + " ";
+  }
+
+  if(sum <= 20) {
+    message = "Do you want to draw a new card?";
+  }else if(sum === 21) {
+    message = "Wohoo! You've got Blackjack! :)";
+    startGameBtn.style.visibility = "visible";
+    hasBlackJack = true;
+  }else {
+    message = "You're out of the game! :(";
+    startGameBtn.style.visibility = "visible";
+    isAlive = false;
+  }
+
+  messageEl.textContent = message;
+}
+
+function newCard() {
+  sum = 0;
+  renderGame()
+}
