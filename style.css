@@ -1,0 +1,44 @@
+body {
+  background-image: url("https://w.wallhaven.cc/full/nr/wallhaven-nrjkqj.jpg"); 
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container h1 {
+  color: yellow;
+  font-size: 40px;
+}
+
+.container h2 {
+  color: white;
+  font-style: italic;
+}
+
+.container .cards-el, .sum-el {
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+}
+
+.container button {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: rgb(156, 179, 45);
+  color: darkgreen;
+  font-weight: bolder;
+}
+
+.container .per-el {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
